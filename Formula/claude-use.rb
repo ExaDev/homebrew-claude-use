@@ -2,28 +2,28 @@
 class ClaudeUse < Formula
   desc "Profile manager and launcher for Claude Code with per-directory sharing rules"
   homepage "https://github.com/ExaDev/claude-use"
-  version "0.1.1"
+  version "0.2.0"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.1.1/claude-use-macos-arm64"
-      sha256 "9d43fa434292f75e70fbeba751cdf2397109a60a45ab1946a1a3b517fa6cf151"
+      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.0/claude-use-macos-arm64"
+      sha256 "26f725ef6d072297ab785ed1b3c740416e2c75d5595ae42a1c74f6605a23b126"
     end
     on_intel do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.1.1/claude-use-macos-x64-unverified"
-      sha256 "bf90e49540d6b1b8eb60a6ffeb6e9cc3ced41bc51663dba00ebd215b0123aa86"
+      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.0/claude-use-macos-x64-unverified"
+      sha256 "115252a141b413de6f7841e40773accc7909165dec421e7c7afcc28da9420221"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.1.1/claude-use-linux-arm64"
-      sha256 "a8019aace827f234bfc69d24755f7c92dd3c853ad71e9e384a6ed753f39ec60f"
+      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.0/claude-use-linux-arm64"
+      sha256 "baf95561d64d3610d8a2422837468f9170d64df110a95f6f175935b379903dcd"
     end
     on_intel do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.1.1/claude-use-linux-x64"
-      sha256 "62c78a2d853845de44c6c712237f75f565205c0a959f0455cf6e9eebfc42ead2"
+      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.0/claude-use-linux-x64"
+      sha256 "24f58d39b43e96486a318aa0ebed0c95d880549492027241a229e79449159c04"
     end
   end
 
@@ -31,8 +31,14 @@ class ClaudeUse < Formula
     downloaded = Dir["claude-use-*"].first
     bin.install downloaded => "claude-use"
     chmod 0755, bin/"claude-use"
-    # `claude` and `claude-use` are the same compiled executable — it decides which behaviour to run based on the name it was invoked as, so both names need to reach it.
-    bin.install_symlink bin/"claude-use" => "claude"
+  end
+
+  def caveats
+    <<~EOS
+      claude-use is installed alone -- nothing on this system claims the `claude` command by default.
+      Run `claude-use run [args...]` to use the launcher directly, or `claude-use shim enable` once
+      if you'd also like the shorter `claude @<name>` form (`claude-use shim disable` undoes it).
+    EOS
   end
 
   test do
