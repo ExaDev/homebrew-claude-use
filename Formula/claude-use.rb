@@ -2,28 +2,28 @@
 class ClaudeUse < Formula
   desc "Profile manager and launcher for Claude Code with per-directory sharing rules"
   homepage "https://github.com/ExaDev/claude-use"
-  version "0.2.7"
+  version "0.2.8"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.7/claude-use-macos-arm64"
-      sha256 "dde1dcd85cd2e1bbdda797975fe919b4844c533607214a073930145a093c76df"
+      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.8/claude-use-macos-arm64"
+      sha256 "8b02603356bd3bd62f95cacbb831c21516cea22bd1aeb03f07ad18788f8593f4"
     end
     on_intel do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.7/claude-use-macos-x64-unverified"
-      sha256 "e2ecaa9ec6e8657482991ca6d64bf3ca3bffbb6100139c0b2e49e91a6f647d0c"
+      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.8/claude-use-macos-x64-unverified"
+      sha256 "88a306c9ab713810ad864470934d28bf801e26bd0b6713735447a0ed9e90452a"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.7/claude-use-linux-arm64"
-      sha256 "a52fb1c750692258094d1db2ea765c2496391f21051f286d3ad7aa2595defa1d"
+      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.8/claude-use-linux-arm64"
+      sha256 "06340b4bb23bf0f3edeef07b435ae2131aadf7e73cfb16ee6867b882f615ea7e"
     end
     on_intel do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.7/claude-use-linux-x64"
-      sha256 "075bf88bc854db226377fba600384b4b16a96f2070af30ee8b5f80e0b8856f21"
+      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.8/claude-use-linux-x64"
+      sha256 "25e51bf83ab3c9c43073cb251c28a556b4844bc50e10db45600bbff35d589ff0"
     end
   end
 
