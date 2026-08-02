@@ -2,35 +2,42 @@
 class ClaudeUse < Formula
   desc "Profile manager and launcher for Claude Code with per-directory sharing rules"
   homepage "https://github.com/ExaDev/claude-use"
-  version "0.2.8"
+  version "0.2.9"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.8/claude-use-macos-arm64"
-      sha256 "8b02603356bd3bd62f95cacbb831c21516cea22bd1aeb03f07ad18788f8593f4"
+      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.9/claude-use-macos-arm64"
+      sha256 "e242bcc4a5ad1c6d0bd105df27252b80bd8e5fd524231836938458678950d148"
     end
     on_intel do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.8/claude-use-macos-x64-unverified"
-      sha256 "88a306c9ab713810ad864470934d28bf801e26bd0b6713735447a0ed9e90452a"
+      # The SEA binary segfaults on every invocation on real x64 macOS hardware -- a known, unfixed upstream Node bug (see README.md's "Build (Node SEA)" section for the full writeup and citations). Installs via npm + a Homebrew-managed Node instead, same code this project already publishes and verifies on the npm channel, on every other platform.
+      url "https://registry.npmjs.org/claude-use/-/claude-use-0.2.9.tgz"
+      sha256 "288f0cf3a3d369765ed70d8cbc5eebbd53eb4195bbc7cc54f367394600794b3d"
+      depends_on "node"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.8/claude-use-linux-arm64"
-      sha256 "06340b4bb23bf0f3edeef07b435ae2131aadf7e73cfb16ee6867b882f615ea7e"
+      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.9/claude-use-linux-arm64"
+      sha256 "612068661046c0032b6f8f4e8e2e9cd38e416fd240aa5f7c9fc707f7a2af03fe"
     end
     on_intel do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.8/claude-use-linux-x64"
-      sha256 "25e51bf83ab3c9c43073cb251c28a556b4844bc50e10db45600bbff35d589ff0"
+      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.9/claude-use-linux-x64"
+      sha256 "8b9140c87a4ce35cbb7956529904f1048ff19c4cc57182c8832a7e580fb1ee76"
     end
   end
 
   def install
-    downloaded = Dir["claude-use-*"].first
-    bin.install downloaded => "claude-use"
-    chmod 0755, bin/"claude-use"
+    if OS.mac? && Hardware::CPU.intel?
+      system "npm", "install", *std_npm_args
+      bin.install_symlink libexec.glob("bin/*")
+    else
+      downloaded = Dir["claude-use-*"].first
+      bin.install downloaded => "claude-use"
+      chmod 0755, bin/"claude-use"
+    end
   end
 
   def caveats
