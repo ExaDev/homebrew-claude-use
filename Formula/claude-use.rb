@@ -2,30 +2,30 @@
 class ClaudeUse < Formula
   desc "Profile manager and launcher for Claude Code with per-directory sharing rules"
   homepage "https://github.com/ExaDev/claude-use"
-  version "0.2.10"
+  version "0.3.2"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.10/claude-use-macos-arm64"
-      sha256 "fea089ee8de5ad8196750247dc0d9b318bef0effe12ea5e0846300b0ae2b97c4"
+      url "https://github.com/ExaDev/claude-use/releases/download/v0.3.2/claude-use-macos-arm64"
+      sha256 "fbc6e5b1e0790f0581d875ca7fc9ce4354eb900daba5b5173c88e74d0e32159b"
     end
     on_intel do
       # The SEA binary segfaults on every invocation on real x64 macOS hardware -- a known, unfixed upstream Node bug (see README.md's "Build (Node SEA)" section for the full writeup and citations). Installs via npm + a Homebrew-managed Node instead, same code this project already publishes and verifies on the npm channel, on every other platform.
-      url "https://registry.npmjs.org/claude-use/-/claude-use-0.2.10.tgz"
-      sha256 "c1678e285181fafc5c858720f7857a254bdd7765e02b3cd3b33d6885986e26dc"
+      url "https://registry.npmjs.org/claude-use/-/claude-use-0.3.2.tgz"
+      sha256 "0aed9d1f81e5e18fd7428a6563e3e5fee86754b5cac6c7ea3307d330ebc1b8c5"
       depends_on "node"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.10/claude-use-linux-arm64"
-      sha256 "c5ba4a0d97ac720be4378ff7d6e14305a9b488779f4ea1f76d5ad93456197610"
+      url "https://github.com/ExaDev/claude-use/releases/download/v0.3.2/claude-use-linux-arm64"
+      sha256 "a97d86fd725ea82392dea25014decf8a79d68dcb45dc93c086452e189ef2e541"
     end
     on_intel do
-      url "https://github.com/ExaDev/claude-use/releases/download/v0.2.10/claude-use-linux-x64"
-      sha256 "79cbe67897fefde2b0b5b3c03d65229c70b5bc36eef8305c6dae6f8b5df7e4c7"
+      url "https://github.com/ExaDev/claude-use/releases/download/v0.3.2/claude-use-linux-x64"
+      sha256 "7e21badcbc92a856ed89ce2fdbf58cac3fd0e21fec0bbcefc83b198c49e9c23b"
     end
   end
 
