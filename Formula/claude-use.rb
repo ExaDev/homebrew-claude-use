@@ -2,30 +2,30 @@
 class ClaudeUse < Formula
   desc "Profile manager and launcher for Claude Code with per-directory sharing rules"
   homepage "https://github.com/ExaDev/claude-use"
-  version "2.4.1"
+  version "2.4.2"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/ExaDev/claude-use/releases/download/v2.4.1/claude-use-macos-arm64"
-      sha256 "a8dcb8ebd1084ee6b8a49f0f347aeb0b6a31895f62d3ed15896dc8ebb3446782"
+      url "https://github.com/ExaDev/claude-use/releases/download/v2.4.2/claude-use-macos-arm64"
+      sha256 "b6c7ac0fbdd41bdc78a75f1cf8a06b80a355842eec411c23939d9adcef8a9187"
     end
     on_intel do
       # The SEA binary segfaults on every invocation on real x64 macOS hardware -- a known, unfixed upstream Node bug (see README.md's "Build (Node SEA)" section for the full writeup and citations). Installs via npm + a Homebrew-managed Node instead, same code this project already publishes and verifies on the npm channel, on every other platform.
-      url "https://registry.npmjs.org/claude-use/-/claude-use-2.4.1.tgz"
-      sha256 "63dd7c1c5d29ffb7dfd8587edfcecee54dc22fec2cc1a741b8c5deb7f5c16670"
+      url "https://registry.npmjs.org/claude-use/-/claude-use-2.4.2.tgz"
+      sha256 "5e9af410b37b66a012a0c8aacc6daa207e5d41f8dd7096e4337845ac19ff00fc"
       depends_on "node"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/ExaDev/claude-use/releases/download/v2.4.1/claude-use-linux-arm64"
-      sha256 "bf2cfdb1afbc7e7c0294ee5b3ef00f0dc3eef79f504778badc8c69f00d5f1914"
+      url "https://github.com/ExaDev/claude-use/releases/download/v2.4.2/claude-use-linux-arm64"
+      sha256 "ecf5adbcead3f23dda0b5100138527ebe1a4eeb9ada55207146c680806eddb55"
     end
     on_intel do
-      url "https://github.com/ExaDev/claude-use/releases/download/v2.4.1/claude-use-linux-x64"
-      sha256 "40a8fdaba8fa0d5995de015ca46939057ca2b926c588c1307f427f11c2d17643"
+      url "https://github.com/ExaDev/claude-use/releases/download/v2.4.2/claude-use-linux-x64"
+      sha256 "109c5f93ac1a2a53e1713b8eef4225a8966a88b6e759696d0322dbca7825d026"
     end
   end
 
